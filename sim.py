@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 import channel
 import modulation
-from rake.dsss import dsss
+from rake.dsss import *
 from rake.rake import rake_receiver
 # theoretical curves
 import theory
@@ -26,7 +26,7 @@ Es = 1
 # bits per symbol
 bps = 4
 # spreading sequence
-spread_seq = dsss.mls.gen_mls([1,1,1,1])
+spread_seq = mls.gen_mls([1,1,1,1])
 # Eb/N0
 EbN0 = np.logspace(-1, 2, 31)
 sigmas = np.sqrt(Es*spread_seq.size/(2*bps*EbN0))
@@ -85,10 +85,10 @@ for idx_pdp, pdp_el in enumerate(pdps):
             # if enough bit errors are available for a thourough statistic quit
             # the simulation for this Eb/N0
             if ((tot_bit_errors[idx_pdp, idx] > max_errors) or (n > max_packets)):
-                    print n, "packets were processed:",
+                    print (n, "packets were processed:",)
                     ber_sim[idx_pdp, idx] = tot_bit_errors[idx_pdp, idx]/(n*M*bps)
                     break
-        print ("BER=%f" % (ber_sim[idx_pdp, idx]))
+        print("BER=%f\n" % (ber_sim[idx_pdp, idx]),)
 
 # save the data
 data = { 'sim': ber_theo,

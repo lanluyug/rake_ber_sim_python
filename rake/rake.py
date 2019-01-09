@@ -1,5 +1,5 @@
 import numpy as np
-import dsss
+from rake.dsss import dsss
 
 class rake_receiver():
     """ a rake receiver that employs maximum ratio combining and uses every
@@ -28,7 +28,7 @@ class rake_receiver():
     def process_signal(self, chips):
         """ process the received chips """
         # preallocate storage space for processed symbols
-        tot_symbols = np.zeros(chips.size/self.spread_seq.size)
+        tot_symbols = np.zeros(int(chips.size/self.spread_seq.size))
         # for each finger of the rake receiver despread the chips
         for (t, d) in self.taps:
             # despread

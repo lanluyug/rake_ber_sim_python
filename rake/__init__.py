@@ -1,2 +1,1 @@
-from rake import *
-import dsss
+from rake.rake import *
