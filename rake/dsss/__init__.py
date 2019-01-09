@@ -1,3 +1,3 @@
-from dsss import *
-import mls
-import walsh_hadamard
+from rake.dsss.dsss import *
+import rake.dsss.mls
+import rake.dsss.walsh_hadamard

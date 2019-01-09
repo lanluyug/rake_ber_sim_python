@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 
 import channel
 import modulation
-from rake import dsss
-from rake import rake_receiver
+from rake.dsss import dsss
+from rake.rake import rake_receiver
 # theoretical curves
 import theory
 
@@ -48,9 +48,9 @@ for idx_pdp, pdp_el in enumerate(pdps):
 
 # simulation of the rake receivers
 for idx_pdp, pdp_el in enumerate(pdps):
-    print "Computing the BER for the following pdp: ", pdp_el['pdp']
+    print ("Computing the BER for the following pdp: ", pdp_el['pdp'])
     for idx, sigma in enumerate(sigmas):
-        print "sigma=%f,"% (sigma),
+        print ("sigma=%f,"% (sigma),)
         # number of transmitted packages
         n = 0;
         # a Rayleigh distributed multipath channel with AWGN
@@ -88,7 +88,7 @@ for idx_pdp, pdp_el in enumerate(pdps):
                     print n, "packets were processed:",
                     ber_sim[idx_pdp, idx] = tot_bit_errors[idx_pdp, idx]/(n*M*bps)
                     break
-        print "BER=%f" % (ber_sim[idx_pdp, idx])
+        print ("BER=%f" % (ber_sim[idx_pdp, idx]))
 
 # save the data
 data = { 'sim': ber_theo,

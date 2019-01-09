@@ -1,2 +1,2 @@
-import qam16
-import qpsk
+from modulation import qam16
+from modulation import qpsk

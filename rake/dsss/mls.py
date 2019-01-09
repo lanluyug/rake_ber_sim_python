@@ -26,7 +26,7 @@ def gen_mls(state):
     g = np.array(generator_polynoms[length-2])
     # array which stores the maximum length sequence
     mls = np.zeros(N)
-    for i in xrange(N):
+    for i in range(N):
         mls[i] = state[0]
         feedback = np.mod(np.sum(state*g), 2)
         state[0:-1] = state[1:]
@@ -34,4 +34,3 @@ def gen_mls(state):
     # switch from bits to +1, -1
     mls = 2*mls-1
     return mls
-
